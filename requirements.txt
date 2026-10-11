@@ -1,0 +1,18 @@
+# Runtime dependencies. PyTorch is installed separately for your hardware (setup.ps1 does this).
+python-doctr>=1.0  # OCR (text detection + recognition) on PyTorch; also brings OpenCV
+pymupdf>=1.24  # PDF -> images
+pillow>=10.0
+pydantic>=2.7
+pydantic-settings>=2.4
+openai>=1.40  # client for Ollama / any OpenAI-compatible API
+python-dateutil>=2.9
+rapidfuzz>=3.0  # fuzzy matching in evaluation
+pandas>=2.2
+openpyxl>=3.1  # Excel export
+pyarrow>=15  # reading the dataset parquet files
+huggingface_hub>=0.24  # dataset download
+fastapi>=0.115  # REST API
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9  # file uploads
+streamlit>=1.50  # web UI
+requests>=2.32

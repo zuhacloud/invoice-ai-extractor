@@ -1,0 +1,102 @@
+[
+  {
+    "dataset": "sroie",
+    "method": "ocr_llm",
+    "n": 10,
+    "fields": {
+      "vendor_name": {
+        "exact": 0.4,
+        "anls": 0.620409982174688
+      },
+      "vendor_address": {
+        "exact": 0.0,
+        "anls": 0.6424175386594098
+      },
+      "invoice_date": {
+        "exact": 1.0,
+        "anls": 1.0
+      },
+      "total": {
+        "exact": 0.6,
+        "anls": 0.6
+      }
+    },
+    "line_items_f1": null,
+    "sec_per_doc": 15.225614959991072,
+    "errors_caught": 1.0,
+    "false_alarms": 1.0
+  },
+  {
+    "dataset": "cord",
+    "method": "ocr_llm",
+    "n": 10,
+    "fields": {
+      "subtotal": {
+        "exact": 0.6,
+        "anls": 0.6
+      },
+      "tax": {
+        "exact": 0.9,
+        "anls": 0.9
+      },
+      "total": {
+        "exact": 0.6,
+        "anls": 0.6
+      }
+    },
+    "line_items_f1": 0.3,
+    "sec_per_doc": 7.232052889995975,
+    "errors_caught": 0.8333333333333334,
+    "false_alarms": 1.0
+  },
+  {
+    "dataset": "sroie",
+    "method": "vlm",
+    "n": 10,
+    "fields": {
+      "vendor_name": {
+        "exact": 1.0,
+        "anls": 1.0
+      },
+      "vendor_address": {
+        "exact": 0.4,
+        "anls": 0.9919646007922067
+      },
+      "invoice_date": {
+        "exact": 1.0,
+        "anls": 1.0
+      },
+      "total": {
+        "exact": 0.5,
+        "anls": 0.5
+      }
+    },
+    "line_items_f1": null,
+    "sec_per_doc": 16.706724070000927,
+    "errors_caught": 1.0,
+    "false_alarms": 0.6
+  },
+  {
+    "dataset": "cord",
+    "method": "vlm",
+    "n": 10,
+    "fields": {
+      "subtotal": {
+        "exact": 0.7,
+        "anls": 0.7
+      },
+      "tax": {
+        "exact": 1.0,
+        "anls": 1.0
+      },
+      "total": {
+        "exact": 0.8,
+        "anls": 0.8
+      }
+    },
+    "line_items_f1": 0.55,
+    "sec_per_doc": 12.56450421998743,
+    "errors_caught": 1.0,
+    "false_alarms": 1.0
+  }
+]

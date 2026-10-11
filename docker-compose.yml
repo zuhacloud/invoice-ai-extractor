@@ -1,0 +1,33 @@
+# Two containers: the API and the web UI. The language models run in Ollama on the host machine
+# (it uses your GPU); install it and pull the models first: ollama pull qwen2.5vl:3b && ollama pull qwen2.5:3b
+# Start everything with: docker compose up --build   then open http://localhost:8501
+services:
+  api:
+    build: .
+    image: docextract:latest  # one image shared by the api and ui services
+    env_file:
+      - path: .env
+        required: false  # start even if there's no .env
+    environment:
+      # "localhost" inside a container means the container itself, so reach Ollama on the host
+      # machine through host.docker.internal. Override with DOCKER_LLM_BASE_URL for a hosted API.
+      LLM_BASE_URL: ${DOCKER_LLM_BASE_URL:-http://host.docker.internal:11434/v1}
+      DEVICE: cpu  # the image has CPU-only PyTorch (OCR only; the LLMs use the host's GPU via Ollama)
+    extra_hosts: ["host.docker.internal:host-gateway"]  # makes host.docker.internal work on Linux too
+    ports: ["8000:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 30
+
+  ui:
+    image: docextract:latest  # same image as the API, different start command
+    command: python -m streamlit run app/streamlit_app.py --server.port 8501 --server.address 0.0.0.0 --server.headless true
+    environment:
+      API_URL: http://api:8000  # the API container's hostname
+    ports: ["8501:8501"]
+    depends_on:
+      api:
+        condition: service_healthy

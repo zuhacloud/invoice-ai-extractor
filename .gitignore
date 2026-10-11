@@ -1,0 +1,17 @@
+# Environment and secrets
+.venv/
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Datasets and outputs (re-create with scripts/download_data.py)
+data/*
+!data/.gitkeep
+outputs/
+
+# Raw evaluation predictions (results.md / results.json are kept)
+eval/runs/

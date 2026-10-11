@@ -1,0 +1,11 @@
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+maxUploadSize = 50  # MB per file
+
+[theme]
+primaryColor = "#2563eb"  # blue: Streamlit's default red would make every confidence bar look like an error
